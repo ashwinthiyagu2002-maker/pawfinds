@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawFinds | Pet Listings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="PawFinds home">
+      <span class="brand-mark">P</span>
+      <span>PawFinds</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#listings">Browse</a>
+      <a href="#sell">List a pet</a>
+      <a href="#care">Care check</a>
+    </nav>
+    <button class="icon-button" id="favoritesButton" aria-label="View favorites" title="Favorites">
+      <span aria-hidden="true">♡</span>
+      <strong id="favoriteCount">0</strong>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <img src="assets/hero-pet-market.png" alt="A puppy and cat beside a laptop showing pet listings" />
+      <div class="hero-copy">
+        <p class="eyebrow">Verified local listings</p>
+        <h1 id="hero-title">PawFinds</h1>
+        <p>Find healthy pets from trusted local sellers, rescues, and families with transparent details before you meet.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#listings">Browse pets</a>
+          <a class="button secondary" href="#sell">Create listing</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Marketplace summary">
+        <span><strong>42</strong> active listings</span>
+        <span><strong>18</strong> verified sellers</span>
+        <span><strong>24h</strong> response target</span>
+      </div>
+    </section>
+
+    <section class="market-shell" id="listings">
+      <aside class="filters" aria-label="Listing filters">
+        <div>
+          <label for="search">Search</label>
+          <input id="search" type="search" placeholder="Breed, city, seller" />
+        </div>
+        <div>
+          <label for="type">Pet type</label>
+          <select id="type">
+            <option value="all">All pets</option>
+            <option value="Dog">Dogs</option>
+            <option value="Cat">Cats</option>
+            <option value="Rabbit">Rabbits</option>
+            <option value="Bird">Birds</option>
+          </select>
+        </div>
+        <div>
+          <label for="budget">Max budget</label>
+          <input id="budget" type="range" min="50" max="1500" value="1500" step="50" />
+          <output id="budgetOutput" for="budget">$1,500</output>
+        </div>
+        <fieldset>
+          <legend>Seller</legend>
+          <label class="check"><input id="verifiedOnly" type="checkbox" /> Verified only</label>
+          <label class="check"><input id="vaccinatedOnly" type="checkbox" /> Vaccinated</label>
+        </fieldset>
+      </aside>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Available now</p>
+            <h2 id="results-title">Pet listings</h2>
+          </div>
+          <select id="sort" aria-label="Sort listings">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price low to high</option>
+            <option value="price-high">Price high to low</option>
+            <option value="youngest">Youngest first</option>
+          </select>
+        </div>
+        <div class="listing-grid" id="listingGrid"></div>
+      </section>
+    </section>
+
+    <section class="seller-band" id="sell" aria-labelledby="sell-title">
+      <div>
+        <p class="eyebrow">For responsible sellers</p>
+        <h2 id="sell-title">Create a listing</h2>
+        <p>Share clear health, care, and pickup details so buyers can make a confident first contact.</p>
+      </div>
+      <form id="listingForm" class="listing-form">
+        <input name="name" placeholder="Pet name" required />
+        <select name="type" required>
+          <option value="">Type</option>
+          <option>Dog</option>
+          <option>Cat</option>
+          <option>Rabbit</option>
+          <option>Bird</option>
+        </select>
+        <input name="breed" placeholder="Breed" required />
+        <input name="city" placeholder="City" required />
+        <input name="price" type="number" min="0" placeholder="Price" required />
+        <button class="button primary" type="submit">Publish listing</button>
+      </form>
+    </section>
+
+    <section class="care-grid" id="care" aria-label="Care and safety checks">
+      <article>
+        <strong>Health documents</strong>
+        <span>Vaccination records, vet visits, and seller ID are highlighted on each listing.</span>
+      </article>
+      <article>
+        <strong>Meet safely</strong>
+        <span>Arrange daylight visits, bring a companion, and confirm pet behavior in person.</span>
+      </article>
+      <article>
+        <strong>Responsible matches</strong>
+        <span>Every listing includes age, temperament, care needs, and rehoming notes.</span>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
